@@ -1,11 +1,4 @@
----
-  title: "Doença de Alzheimer"
-author: "Guilherme Araujo Gonçalves de Souza"
-date: "18 de fevereiro de 2018"
-output: html_document
----
-  
-  ## Doença de Alzheimer
+## Doença de Alzheimer
   
   ![](https://hypescience.com/wp-content/uploads/2015/04/proteina-tau-alzheimer-838x629.jpg)
   
