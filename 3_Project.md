@@ -154,14 +154,14 @@ Na técnica de imputação por Random Forest são combinados resultados de diver
 PS: Para que o documento não ficasse com mais de 1500 linhas de imputação, o output não foi mostrado.
 
 ```{r, cache = TRUE, results=FALSE}
-#set.seed(2709) #configurando uma semente
-#df_dataset %<>%  filter(pmat <= 1)
-#imp <- mice(df_dataset, m = 5, maxit = 50, method = "rf", seed = 2709)
-#
-#df_dados_imputados <- mice::complete(imp, 1)
-#df_dados_imputados %<>% dplyr::filter(ano == 2016)
+set.seed(2709) #configurando uma semente
+df_dataset %<>%  filter(pmat <= 1)
+imp <- mice(df_dataset, m = 5, maxit = 50, method = "rf", seed = 2709)
+
+df_dados_imputados <- mice::complete(imp, 1)
+df_dados_imputados %<>% dplyr::filter(ano == 2016)
 #Salvando a base para que não seja rodada novamente pelo alto custo computacional
-#df_dados_imputados %>% write.csv2("dados_imputados.csv", row.names = FALSE)
+df_dados_imputados %>% write.csv2("dados_imputados.csv", row.names = FALSE)
 df_dados_imputados <- read.csv2("dados_imputados.csv")
 df_dados_imputados %<>%  filter(pmat <= 1)
 ```
