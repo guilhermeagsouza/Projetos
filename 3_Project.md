@@ -392,6 +392,7 @@ abline(v = 6, col = "red", lty = c(2), lwd = c(3))
 
 ```{r}
 cluster_km <- kmeans(df_scale, centers = 6)$cluster
+
 ```
 
 ### Número de municípios/Proporção de municípios por cluster
@@ -409,7 +410,7 @@ df_dados_imputados %>%
   DT::datatable(rownames = F)
 ```
 
-![](
+![](https://github.com/guilhermeagsouza/ImagensTabelasDosProjetos/blob/master/numero_clusters.png)
 
 ### Tabela com a média de cada variável para cada cluster
 
@@ -423,7 +424,7 @@ df_dados_imputados %>%
   DT::datatable(rownames = F)
 ```
 
-![](https://github.com/guilhermeagsouza/ImagensTabelasDosProjetos/blob/master/tabela_cluster.png)
+![](https://github.com/guilhermeagsouza/ImagensTabelasDosProjetos/blob/master/tabela_media_variavel.png)
 
 ### Análise dos clusters
 
