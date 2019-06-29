@@ -1,19 +1,4 @@
----
-title: "Projeto"
-output:
-  pdf_document:
-    toc: yes
-  html_document:
-    code_folding: show
-    fig_caption: yes
-    fig_height: 4
-    fig_width: 7.5
-    highlight: default
-    number_sections: yes
-    theme: journal
-    toc: yes
----
-# Objetivo
+# 0: Descrição do projeto
 Comparar munícipios para estabelecer metas de redução de óbito e acidentes em estradas, para o ano de 2017.
 A técnica de clusterização foi utilizada para separar grupos com variáveis mais relevantes umas com as outras.
 
@@ -296,7 +281,7 @@ plot(train$PC1,train$PC2,type="n",main="Duas primeiras componentes principais",
 text(train$PC1,train$PC2,label=train$label, col=colors[train$label])
 ```
 
-![]()
+![](https://github.com/guilhermeagsouza/ImagensTabelasDosProjetos/blob/master/duas_componentes.png)
 
 # Modelo de regressão - Variáveis relevantes
 
@@ -323,6 +308,30 @@ df_lm <- df_dados_imputados %>%
 regressao <- lm(log(pib) ~ ., data = df_lm %>% 
                        dplyr::select(-populacao,-pop1519, -jovem, -pop2529,-pop2024, -motos, -pmotos))
 summary(regressao)
+
+Call:
+lm(formula = log(pib) ~ ., data = df_lm %>% dplyr::select(-populacao, 
+    -pop1519, -jovem, -pop2529, -pop2024, -motos, -pmotos))
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.215678 -0.028185 -0.001953  0.028722  0.217919 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  2.117e+00  8.911e-02  23.751  < 2e-16 ***
+mat1517      4.673e-02  1.699e-02   2.750 0.006201 ** 
+veiculos     4.467e-02  3.677e-03  12.150  < 2e-16 ***
+pop60p      -4.617e-03  1.206e-03  -3.827 0.000148 ***
+pjovem      -2.857e-03  1.415e-03  -2.019 0.044069 *  
+pmat        -8.617e-02  1.615e-02  -5.337 1.51e-07 ***
+rodovia      2.552e-04  7.602e-05   3.357 0.000856 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.04675 on 443 degrees of freedom
+Multiple R-squared:  0.8007,	Adjusted R-squared:  0.798 
+F-statistic: 296.7 on 6 and 443 DF,  p-value: < 2.2e-16
 ```
 
 
@@ -339,6 +348,9 @@ isto é, se as variáveis são altamente correlacionadas, o que aumenta a variab
 
 ```{r}
 car::vif(regressao)
+
+mat1517 veiculos   pop60p   pjovem     pmat  rodovia 
+1.499978 4.844512 2.441433 2.265945 3.992041 1.416054 
 ```
 
 # Clusterização - Kmeans clustering
