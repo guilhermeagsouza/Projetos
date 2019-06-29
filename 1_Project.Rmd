@@ -1,0 +1,104 @@
+# Competition
+## Store Item Demand Forecasting Challenge
+## Predict 3 months of item sales at different stores
+
+# Welcome to the modeling analysis
+
+#Library
+library(caret)
+library(data.table)
+library(ggplot2)
+library(dplyr)
+library(forecast)
+library(lubridate)
+library(magrittr)
+library(purrr)
+library(tidyr)
+
+#Loading data
+train <- read.csv2("../input/train.csv", sep = ",")
+test <- read.csv2("../input/test.csv", sep = ",")
+sample_submission <- read.csv2("../input/sample_submission.csv", sep = ",")
+
+#Creating variable sale in test
+test$sales <- NA
+test$id <- NULL
+
+#Joining train and test data
+train %<>% rbind(test)
+
+#Transforming date format
+train$date %<>% lubridate::ymd()
+test$date %<>% lubridate::ymd()
+
+#Creating variable year, weekdays and month by date
+train %<>% 
+  mutate(year = as.numeric(lubridate::year(date)),
+         weekdays = as.numeric(lubridate::wday(date)), 
+         month = as.numeric(lubridate::month(date)))
+
+#Creating variables as weekly and monthly sales.
+train %<>% 
+  group_by(store, item, weekdays) %>% 
+  mutate(sales_week = mean(sales, na.rm = TRUE)) %>%
+  ungroup() %>% 
+  group_by(store, item, month) %>% 
+  mutate(sales_month = mean(sales, na.rm = TRUE)) %>% 
+  ungroup()
+
+#Replacing sales equals 0 to 1. Not disturb modelling!!
+train %<>% 
+  mutate(sales = ifelse(sales == 0, 1, sales))
+
+#We want to repeat an action for each store and item.
+#To do that, we need a new data structure: the nested data frame. 
+by_train <- train %>% 
+  group_by(store, item) %>% 
+  nest()
+
+#Model-fitting function. Hadley knows!
+#Instead of FOR, I usually map function in R.
+train_model <- function(train) {
+  
+    ts_train2 <- ts(train %>% 
+                      dplyr::filter(year < 2018) %>% 
+                      dplyr::select(sales))
+    
+    xtrain2 <-  ts(train %>% #xregs train
+                dplyr::filter(year < 2018) %>% 
+                dplyr::select(year, weekdays, month, sales_week, sales_month))
+    
+    xtest2 <- train %>% #xregs test
+      dplyr::filter(year == 2018) %>% 
+      dplyr::select(year, weekdays, month, sales_week, sales_month) %>% 
+      ts()
+
+    #Neural Network fitting
+    nnxreg_fit2 <- nnetar(ts_train2, xreg = xtrain2, 
+                          lambda = 0,  #Forecasts will stay positive
+                          decay = 0, # weight decay
+                          maxit = 100) #number of iterations
+    
+    forecast(nnxreg_fit2, xreg = xtest2, h = 90) %>% 
+    data.frame() %>% 
+    mutate(sales = Point.Forecast) %>% 
+    dplyr::select(sales)
+  
+}
+
+#We’re going to create a new variable in the by_train data frame.
+models_nnetar <- by_train %>% 
+  mutate(mod = purrr::map(data, train_model)
+  )
+
+#Prediction
+prediction_nnetar <- tidyr::unnest(models_nnetar, mod) %>% 
+  mutate(id = sample_submission$id) %>% 
+  dplyr::select(id, sales)
+
+#Saving output
+prediction_nnetar %>% data.table::fwrite("nnetar_model.csv")
+
+#References:
+#Forecasting: principles and practice. RJ Hyndman, G Athanasopoulos. OTexts, 2018. 941, 2018. 
+#R for Data Science: Import, Tidy, Transform, Visualize, and Model Data. Hadley Wickham and Garrett Grolemund.

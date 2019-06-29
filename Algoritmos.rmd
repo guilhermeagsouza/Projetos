@@ -1,0 +1,225 @@
+---
+title: ''
+output:
+  html_document: default
+  html_notebook: default
+---
+
+# Método
+## Árvore de decisão (trees)
+
+### Ideias chave
+1. Iterativamente dividir as variáveis dentro de grupos
+2. Avaliar homogeneidade dentro de cada grupo
+3. Dividir novamente caso necessário
+
+#### Prós
+1. Fácil de interpretar
+2. Melhor performance em dados não lineares
+
+#### Contras
+* Sem utilização do cross-validation pode levar ao overfitting
+* Mais difícil de estimar incertezas
+* Resultados podem ser variáveis 
+
+### Ideia do algoritmo
+1. Começa com todas as variáveis em um grupo
+2. Encontra a variável que melhor separa o resultado
+3. Divide os dados dentro de dois grupos folhas ("leaves") ou nós ("nodes").
+4. Dentro de cada divisão, encontra a melhor variável que separa o resultado
+5. Continua até os grupos ficarem muito pequenos
+
+### Medidas de "impureza" (impurity)
+
+1. Erro de classificação (missclassification Error)
+* 0 = perfeita pureza
+* 0.5 = sem pureza
+
+2. Índice de Gini (Gini index)
+* 0 = perfeita pureza
+* 0.5 = sem pureza
+
+3. Deviance/ganho de informação
+* 0 = perfeita pureza
+* 1 = sem pureza
+
+[Fonte: Árvore de decisão](https://en.wikipedia.org/wiki/Decision_tree_learning)
+
+* Exemplo
+* Erro de classificação: 1/16 = 0.06
+* Índice de Gini = 1-(1/16)^2 + (15/16)^2 = 0.12
+* Deviance = -[(1/16) log2 (1/16) + (15/16) log2 (15/16)] = 0.34
+
+
+#### Exemplo: Dados Iris
+```{r echo = T, warning=F}
+suppressMessages(library(tidyverse))
+suppressMessages(library(magrittr))
+suppressMessages(library(caret))
+suppressMessages(library(rattle))
+suppressMessages(library(ElemStatLearn))
+suppressMessages(library(ISLR))
+```
+
+```{r}
+#Carregando a base iris
+data("iris")
+names(iris)
+table(iris$Species)
+```
+
+```{r}
+#Separando os dados em treino/teste
+inTrain <- createDataPartition(y = iris$Species, p = 0.7, list = FALSE)
+training <- iris[inTrain,]
+testing <- iris[-inTrain,]
+```
+
+```{r plot}
+#Relação entre as pétala (petal) e sépala (sepal)
+#training %>% ggplot(aes(x = Petal.Width, y = #Sepal.Width, colour = Species)) + geom_point() + #theme_bw()
+```
+
+```{r}
+modFit <- caret::train(Species ~., method = "rpart", data = training)
+print(modFit$finalModel)
+```
+
+```{r}
+#plot(modFit$finalModel, uniform = TRUE, main = #"Classification Tree")
+
+#text(modFit$finalModel, use.n = TRUE, all = #TRUE, cex = .8)
+
+rattle::fancyRpartPlot(modFit$finalModel)
+```
+
+```{r}
+#Prevendo novos valores
+predict(modFit, newdata = testing)
+```
+
+# Método Bagging (bootstrap aggregating)
+
+### Ideia chave
+1. Reamostrar casos e e recalcular predições
+2. Média ou maioria dos votos
+
+### Notas
+* Vício similar
+* Variância reduzida
+* Mais útil para funções não lineares
+
+#### Exemplo: Ozone dataset
+* Variáveis: ozônio, radiação, temperatura, velocidade do vento
+```{r}
+ElemStatLearn::ozone
+ozone <- ozone[order(ozone$ozone),]
+head(ozone)
+```
+
+# Random forests
+1. Amostras de bootstrap
+2. Em cada divisão faz-se um bootstrap da variável
+3. Crescem múltiplas árvores
+
+#### Prós
+1. Acurácia
+
+#### Contras
+1. Velocidade
+2. Interpretabilidade
+3. Overfitting
+
+```{r}
+inTrain >- createDataPartition(y = iris$Species, p= 0.7, list = FALSE)
+training <- iris[inTrain, ]
+testing <- iris[- inTrain,]
+```
+
+```{r}
+#Ajuste do modelo
+modFit <- caret::train(Species ~., data = training, method = "rf", prox = TRUE)
+randomForest::getTree(modFit$finalModel, k=2)
+
+#Previsão
+pred <- predict(modFit, testing)
+testing$predRight <- pred == testing$Species
+
+table(pred, testing$Species)
+
+#Gráfico da previsão de novos valores
+testing %>% 
+  ggplot(aes(x = Petal.Width, y = Petal.Length, colour = predRight, main = "Previsão dos novos dados")) + geom_point()
+```
+
+# Boosting
+1. Pega muitos preditores fracos
+2. Pondera os preditores e adiciona-os
+3. Obtém um preditor mais forte
+
+### Ideia chave por trás do boosting
+1. Começa com um conjunto de classificadores (ex: todas árvores possíveis, todos modelos de regressão possíveis)
+
+2. Cria um classificador que combina funções de classificação
+* Meta é minimizar o erro (nos dados de treinamento)
+* Iterativo, seleciona um classificador em cada passo
+* Calcula pesos baseados nos erros
+* Sobe o peso para classificações perdidas e seleciona o próximo classificador
+
+- gbm -> gradiente boosting com árvores
+- mboost -> modelo baseado em boosting
+- ada -> statistical boosting baseado em regressão logística aditiva
+- gamBoost -> boosting de modelo aditivo generalizado
+
+```{r}
+ISLR::Wage
+Wage %<>% select(-logwage)
+inTrain <- createDataPartition(y = Wage$wage, p = 0.7, list = FALSE)
+training <- Wage[inTrain,]
+testing <- Wage[-inTrain,]
+```
+
+```{r}
+#Ajustando o gradiente boosting (gbm)
+modFit <- caret::train(wage ~., method = "gbm", data = training, verbose = FALSE)
+print(modFit)
+```
+
+```{r}
+#Gráfico dos resultados
+testing %>% 
+  ggplot(aes(x = predict(modFit, testing), y = wage)) + geom_point() + theme_bw()
+```
+
+# Previsão baseada em modelo
+1. Assuma que os dados seguem um modelo de probabilidade
+2. Use Teorema de Bayes para identificar classificadores ótimos
+
+### Prós
+* Pode tomar vantagem da estrutura dos dados
+* Pode ser computacionalmente conveniente
+* É razoavelmente acurado em modelos reais
+
+### Contras
+* Faz premissas adicionais sobre os dados
+* Quando o modelo está incorreto você pode obter acurácia reduzida
+
+```{r}
+#Separando os dados em treino/teste
+inTrain <- createDataPartition(y = iris$Species, p = 0.7, list = FALSE)
+training <- iris[inTrain,]
+testing <- iris[-inTrain,]
+
+#Ajustando análise discriminante
+modlda <- caret::train(Species ~., data = training, method = "lda")
+#Ajustando Naive Bayes
+modnb <- caret::train(Species ~., data = training, method = "nb")
+plda <- predict(modlda, testing)
+pnb <- predict(modnb, testing)
+table(plda, pnb)
+
+#Comparação de resultados
+equalPredictions <- (plda == pnb)
+testing %>% 
+  ggplot(aes(x = Petal.Width, y = Petal.Length, colour = equalPredictions)) + geom_point() + theme_bw()
+```

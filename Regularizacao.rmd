@@ -1,0 +1,140 @@
+---
+title: "Regularização/Ensemble"
+author: "Guilherme Araujo Gonçalves de Souza"
+output: html_document
+---
+
+# Regressões regularizadas
+
+### Ideias chave
+1. Ajustar um modelo de regressão
+2. Penalizar (shrink) grandes coeficientes
+
+### Prós
+* Pode ajudar com o tradeoff de vício/variância
+* Pode ajudar com a seleção do modelo
+
+### Contras
+* Pode estar computacionalmente demandando em grandes datasets
+* Não performa tão bem quanto random forests e boosting
+
+
+```{r}
+#Carregando pacotes
+suppressMessages(library(caret))
+suppressMessages(library(ElemStatLearn))
+suppressMessages(library(tidyverse))
+suppressMessages(library(magrittr))
+suppressMessages(library(ISLR))
+```
+
+### Exemplo: Câncer de próstata
+```{r}
+ElemStatLearn::prostate
+```
+
+```{r}
+small <- prostate[1:5,]
+lm(lpsa ~., data = small)
+```
+### Regularização é uma forma de penalizar a soma dos quadrados dos erros.
+* Penalidade reduz a complexidade
+* Penalidade reduz a variância
+* Penalidade respeita a estrutura do problema
+
+
+
+* Conforme aumenta-se o número de preditores, o erro nos dados de treinamento sempre diminui.
+* Acontece o mesmo nos dados de teste até certo período, chegando-se a um plateau e o erro volta a crescer, o que é considerado overfitting, justificado pelo excesso de preditores.
+
+```{r}
+inTrain <- caret::createDataPartition(y = prostate$lpsa, p = 0.7, list = FALSE)
+training <- prostate[inTrain,]
+testing <- prostate[-inTrain,]
+
+modRidge <- caret::train(lpsa ~., method = "ridge",data = training)
+predRidge <- predict(object = modRidge, testing)
+#table(predRidge, testing$lpsa)
+
+modLasso <- caret::train(lpsa ~., method = "lasso",data = training)
+predLasso <- predict(object = modLasso, testing)
+#table(predLasso, testing$lpsa)
+testing %>% ggplot(aes(x = predLasso, y = testing$lpsa)) + geom_point() + theme_bw()
+```
+
+# Ensemble methods
+
+### Ideias chaves
+* Pode-se combinar preditores pela média
+* Combinando classificadores que melhoram a acurácia
+* Combinando classificadores que reduzem a interpretabilidade
+* Boosting, bagging e random forests são variantes nesse tema
+
+### Alguns approaches para combinar classificadores
+
+1. Bagging, boosting e random forests
+* Geralmente combinam classificadores similares
+
+2. Combinar diferentes classificadores
+* Model stacking
+* Modelo ensembling 
+
+### Exemplo com Wage dataset
+```{r}
+ISLR::Wage
+Wage %<>% select(-logwage)
+
+#Criando dados e validando
+inBuild <- createDataPartition(y = Wage$wage, p = 0.7, list = FALSE)
+validation <- Wage[-inBuild,]
+buildData <- Wage[inBuild,]
+
+inTrain <- createDataPartition(y = buildData$wage, p = 0.7, list = FALSE)
+training <- buildData[inTrain,]
+testing <- buildData[-inTrain,]
+```
+
+
+### Construindo dois modelos diferentes
+```{r}
+
+modGlm <- caret::train(wage ~., method = "glm", data = training)
+
+modRf <- caret::train(wage ~., method = "rf", data = training, trControl = trainControl(method = "cv"), number = 3)
+```
+
+```{r}
+#Prevendo nos dados de teste
+pred1 <- predict(modGlm, testing)
+pred2 <- predict(modRf, testing)
+testing %>% ggplot(aes(x = pred1, y = pred2, colour = wage)) + geom_point() + theme_bw()
+
+```
+### Ajustando um modelo que combina preditores
+```{r}
+predDF <- data.frame(pred1, pred2, wage = testing$wage)
+combModFit <- caret::train(wage ~., method = "gam", data = predDF)
+combPred <- predict(combModFit, predDF)
+```
+
+#### Erros de teste
+```{r}
+sqrt(sum((pred1-testing$wage)^2))
+sqrt(sum((pred2-testing$wage)^2))
+sqrt(sum((combPred-testing$wage)^2))
+```
+
+#### Prevendo nos dados de validação
+```{r}
+pred1V <- predict(modGlm, validation)
+pred2V <- predict(modRf, validation)
+predVDF <- data.frame(pred1 = pred1V, pred2 = pred2V)
+combPredV <- predict(combModFit, predVDF)
+```
+
+#### Avaliando a validação
+```{r}
+sqrt(sum((pred1V - validation$wage)^2))
+sqrt(sum((pred2V - validation$wage)^2))
+sqrt(sum((combPredV - validation$wage)^2))
+```
