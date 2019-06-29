@@ -19,5 +19,11 @@ Neste [link](https://www.kaggle.com/guilhermeagsouza/neural-network-autoregressi
  O código está disponível neste [link](https://github.com/guilhermeagsouza/Projetos/blob/master/2_Project.md).
  
  ------------------------------
+ **<p>Código: 3_Project</p>**
+Descrição: Neste projeto estudo indicadores econômicos, de educação, população e infraestrutura que mais impactam em medidas que possam auxiliar municípios de São Paulo em metas de redução de óbito e acidentes em estradas, para o ano de 2017. Foram utilizadas técnicas de imputação de dados com Random Forest, modelo de regressão para avaliar quais variáveis eram significativas e por final a técnica de clusterização para identificar quais variáveis são mais associadas a um grupo de municípios. 
+
+ O código está disponível neste [link](https://github.com/guilhermeagsouza/Projetos/blob/master/3_Project.md).
+ 
+ ------------------------------
 **<p>Dashboard para Gestão de Combustível feito em Shiny</p>**
 Descrição: Neste [link](https://guilhermeagsouza.shinyapps.io/gestao_combustivel_beta/) está disponível um dashboard criado por mim para analisar indicadores de gestão de combustível de diversos níveis hierárquicos de uma companhia. O dashboard está compartilhado no site [ShinyApps](https://www.shinyapps.io).
