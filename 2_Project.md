@@ -213,6 +213,8 @@ for(i in 1:length(estations)) {
 #  dplyr::select(-Estação)
 ```
 
+------------------------------
+
 ## 2.0 Agregando os dados para diário
 Os dados foram imputados na Estação Irajá
 ```{r}
@@ -279,6 +281,8 @@ plot(ajuste_sazonal, xlab = ' ', ylab = 'Ajuste sazonal', main = 'Ajuste sazonal
 ```
 
 ![](https://github.com/guilhermeagsouza/ImagensTabelasDosProjetos/blob/master/remocao_sazonalidade.png)
+
+------------------------------
 
 ## 3.0 Modelos
 Serão 4 os modelos de previsão:
@@ -458,6 +462,8 @@ unlist(lista_mape)
 mean(unlist(lista_mape))
 ```
 
+------------------------------
+
 ## 4 Modelos de Redes Neurais
 ```{r}
 inds <- treino$Data
@@ -531,6 +537,8 @@ for (i in 1:10) {
 unlist(lista_mape)
 mean(unlist(lista_mape))
 ```
+
+------------------------------
 
 ## 5 Modelo ARIMA
 #### Etapas da modelagem
@@ -750,6 +758,7 @@ mean(unlist(lista_mape))
 
 ```
 
+------------------------------
 
 ## 6 Conclusão dos modelos
 Dois modelos univariados de séries temporais foram utilizados: o modelo de suavização exponencial sazonal, proposto por Holt & Winters (1960) e o modelo SARIMA, proposto por Box & Jenkins (1970). A abordagem de Box & Jenkins utiliza os valores passados e presentes da série, permitindo fazer previsões de valores futuros. Os modelos autorregressivos integrados de médias móveis recebem o nome de ARIMA. Quando há adição de sazonalidade, o modelo chama-se SARIMA. Tanto o modelo de suavização exponencial, quanto o modelo SARIMA consideram os padrões de tendência, sazonalidade e ciclo.
@@ -757,6 +766,8 @@ Dois modelos univariados de séries temporais foram utilizados: o modelo de suav
 Os dois modelos posteriores são Redes Neurais e o algoritmo Prophet, desenvolvido pelo Facebook. (a adicionar)
 
 Para análise da performance dos modelos, foi utilizado a métrica MAPE, que representa o erro médio ponderado. O modelo Holt-Winters apresentou o menor MAPE com 19% de acurácia e o com maior erro agregado foi o modelo SARIMA com 31%.
+
+------------------------------
 
 ## 7 Bibliografia
 
