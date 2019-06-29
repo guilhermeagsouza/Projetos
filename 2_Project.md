@@ -1,3 +1,6 @@
+# 0. Descrição do projeto
+Descrição: Neste projeto analisamos dados diários da concentração de monóxido de carbono de estações de monitoramento da qualidade do ar, obtidos através do site [Data.Rio](http://www.data.rio). Foi realizada uma análise exploratória (EDA), além da previsão de quatro modelos distintos, sendo eles o primeiro o de suavização exponencial Holt-Winters, o segundo Prophet (desenvolvido pelo Facebook), o terceiro Redes Neurais (Hyndman) e o modelo ARIMA. Utilizou-se validação cruzada (cross-validation) para cálculo dos *mapes* (mean absolute percentage error), métrica para avaliação da acurácia dos modelos.
+
 # 1. Análise Exploratória 
 
 ## 1.1 Pacotes utilizados na análise
