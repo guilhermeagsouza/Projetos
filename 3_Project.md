@@ -424,8 +424,6 @@ df_dados_imputados %>%
   DT::datatable(rownames = F)
 ```
 
-![](https://github.com/guilhermeagsouza/ImagensTabelasDosProjetos/blob/master/tabela_media_variavel.png)
-
 
 ### Análise dos clusters
 
