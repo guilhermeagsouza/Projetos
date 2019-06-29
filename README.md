@@ -16,7 +16,7 @@ Neste [link](https://www.kaggle.com/guilhermeagsouza/neural-network-autoregressi
  **<p>Código: 2_Project</p>**
  Descrição: Neste projeto analisamos dados diários da concentração de monóxido de carbono de estações de monitoramento da qualidade do ar, obtidos através do site [Data.Rio](http://www.data.rio). Foi realizada uma análise exploratória (EDA) e detecção de anomalias, além da previsão de quatro modelos distintos, sendo eles o primeiro o de suavização exponencial Holt-Winters, o segundo Prophet (desenvolvido pelo Facebook), o terceiro Redes Neurais (Hyndman) e o modelo ARIMA. Utilizou-se validação cruzada (cross-validation) para cálculo dos *mapes* (mean absolute percentage error), métrica para avaliação da acurácia dos modelos. 
  
- ![](https://github.com/guilhermeagsouza/ImagensTabelasDosProjetos/blob/master/tabela_anomalia.png)
+![](https://github.com/guilhermeagsouza/ImagensTabelasDosProjetos/blob/master/deteccao_anomalia.png)
  
  ![](https://github.com/guilhermeagsouza/ImagensTabelasDosProjetos/blob/master/previsao_prophet.png)
  
