@@ -426,6 +426,7 @@ df_dados_imputados %>%
 
 ![](https://github.com/guilhermeagsouza/ImagensTabelasDosProjetos/blob/master/tabela_media_variavel.png)
 
+
 ### Análise dos clusters
 
 * Cluster 1: São Paulo.
