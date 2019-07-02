@@ -791,6 +791,6 @@ https://otexts.com/fpp2/stl.html (2018). Accessed 18 March 2019.</p>
 <p>R Core Team: R: A language and environment for statistical computing. R Foundation.
 https://www.R-project.org/ (2018). Accessed 30 June 2019.</p>
 <p>Taylor, S., Letham, B.: prophet: Automatic Forecasting Procedure. R package version 0.5.
-<p>https://CRAN.R-project.org/package=prophet (2019). Accessed 30 June 2019.</p>
+https://CRAN.R-project.org/package=prophet (2019). Accessed 30 June 2019.</p>
 <p>Zhang. G.P., Qi, M.: Neural network forecasting for seasonal and trend time series. Eur. J. Oper.
 160, 501-514 (2005)</p>
