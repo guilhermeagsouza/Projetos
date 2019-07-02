@@ -774,9 +774,23 @@ Para análise da performance dos modelos, foi utilizado a métrica MAPE, que rep
 
 ## 7 Bibliografia
 
-HOLT, C. E (1957). Forescasting seasonals and trends by exponentially weighted averages. O. N. R Memorandum N. 52). Carnegie Institute of Tecnology, Pittsburgh, USA. 
-JARQUE, C. M & BERA, A. K (1980). Efficient tests for normality, homoscedasticity and serial independence of regression residuals. Economic Letters. 
-
-LJUNG, G. M & BOX, G. E. P (1978). On a measure of a lack off it in time series models. Biometrika. 
-
-WINTERS, P. R (1960). Forecasting sales by exponentially weighted moving averages. Management Science, 6, 324-342. 
+Cochrane, C.: Time Series Nested Cross-Validation. Towards Data Science.
+https://towardsdatascience.com/time-series-nested-cross-validation-76adba623eb9 (2018).
+Accessed 10 May 2019.
+Dancho, M., Vaughan, D.: anomalize: Tidy Anomaly Detection. R package version 0.1.1.
+https://CRAN.R-project.org/package=anomalize (2018). Accessed 30 June 2019.
+Data.Rio: Dados horários do monitoramento da qualidade do ar - MonitorAr. .
+http://www.data.rio/datasets/5b1bf5c3e5114564bbf9b7a372b85e17_2 (2019). Accessed 12
+January 2019.
+Ferreira, P. C., Speranza, T., Costa, J., Teixeira, F., Marcolino, D.: BETS: Brazilian Economic
+Time Series. R package version 0.4.9. https://CRAN.R-project.org/package=BETS (2018). 
+Hyndman, R., Athanasopoulos, G., Bergmeir, C., Caceres, G., Chhay, L., O'Hara-Wild, M.,
+Petropoulos, F., Razbash, S., Wang, E., Yasmeen, F.: forecast: Forecasting functions for time series and linear models. R package version 8.7. http://pkg.robjhyndman.com/forecast (2019). Accessed 30 June 2019.
+Hyndman, R.J., & Athanasopoulos, G: Forecasting principles and Practice. OTexts.
+https://otexts.com/fpp2/stl.html (2018). Accessed 18 March 2019. 
+R Core Team: R: A language and environment for statistical computing. R Foundation.
+https://www.R-project.org/ (2018). Accessed 30 June 2019. 
+Taylor, S., Letham, B.: prophet: Automatic Forecasting Procedure. R package version 0.5.
+https://CRAN.R-project.org/package=prophet (2019). Accessed 30 June 2019. 
+Zhang. G.P., Qi, M.: Neural network forecasting for seasonal and trend time series. Eur. J. Oper.
+160, 501-514 (2005)
