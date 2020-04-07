@@ -25,5 +25,11 @@ Descrição: Neste projeto estudo indicadores econômicos, de educação, popula
  O código está disponível neste [link](https://github.com/guilhermeagsouza/Projetos/blob/master/3_Project.md).
  
  ------------------------------
+ **<p>Documento: 3_Project</p>**
+ Descrição: Análise do perfil dos vendedores da varejista Ricardo Eletro. Foram análisadas as variáveis de recência, frequência de vendas e valor monetário das vendas. Foram propostas duas metodologias: uma de clusterização k-means e outra considerando os quartis de um boxplot, recebendo cada critério 0,2,3,4 pontos. Também foi verificado quais os vendedores migravam semanalmente entre 3 perfis diferentes (high, medium, low). 
+ 
+ Os códigos estão invisíveis, porém os resultados podem ser vistos neste [link](https://github.com/guilhermeagsouza/Projetos/blob/master/An%C3%A1lise%20Vendedores%20da%20Ricardo%20Eletro.pdf).
+ 
+ ------------------------------
 **<p>Dashboard para Gestão de Combustível feito em Shiny</p>**
 Descrição: Neste [link](https://guilhermeagsouza.shinyapps.io/gestao_combustivel_beta/) está disponível um dashboard criado por mim para analisar indicadores de gestão de combustível de diversos níveis hierárquicos de uma companhia. O dashboard está compartilhado no site [ShinyApps](https://www.shinyapps.io).
