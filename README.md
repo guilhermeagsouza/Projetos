@@ -29,3 +29,5 @@ Descrição: Neste projeto estudo indicadores econômicos, de educação, popula
  Descrição: Análise do perfil dos vendedores da varejista Ricardo Eletro. Foram análisadas as variáveis de recência, frequência de vendas e valor monetário das vendas. Foram propostas duas metodologias: uma de clusterização k-means e outra considerando os quartis de um boxplot, recebendo cada critério 0,2,3,4 pontos. Também foi verificado quais os vendedores migravam semanalmente entre 3 perfis diferentes (high, medium, low). 
  
  Os códigos estão invisíveis, porém os resultados podem ser vistos neste [link](https://github.com/guilhermeagsouza/Projetos/blob/master/An%C3%A1lise%20Vendedores%20da%20Ricardo%20Eletro.pdf) (relatório).
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=guilhermeagsouza&theme=highcontrast)](https://github.com/guilhermeagsouza/github-readme-stats)
