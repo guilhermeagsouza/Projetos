@@ -32,4 +32,4 @@ Descrição: Neste projeto estudo indicadores econômicos, de educação, popula
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=guilhermeagsouza&theme=highcontrast)](https://github.com/guilhermeagsouza/github-readme-stats)
 
-[![Linkedin Badge](https://img.shields.io/badge/-Alice-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/guilhermeagsouza/)](https://www.linkedin.com/in/guilhermeagsouza/) 
+[![Linkedin Badge](https://img.shields.io/badge/-Guilherme-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/guilhermeagsouza/)](https://www.linkedin.com/in/guilhermeagsouza/) 
