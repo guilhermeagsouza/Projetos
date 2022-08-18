@@ -34,6 +34,8 @@ Descrição: Neste projeto estudo indicadores econômicos, de educação, popula
  **<p>Projeto: Previsão da Audiência das marcas do Grupo Abril</p>**
  Descrição: Prever a audiência de cada marca (Veja, Superinteressante, Guia do Estudante, Quatro Rodas, Capricho, Boaforma, Saúde e Cláudia) do Grupo Abril através da métrica de pageviews. Foram realizadas análises iniciais para monitoramento de possíveis quebras estruturais nas séries. Posteriormente quatro modelos foram propostos: ETS (modelo de suavização exponencial), Prophet (Facebook), SARIMA (com variáveis regressoras) e um Ensemble ponderado dos modelos. A consolidação dos resultados alimentava um banco de dados no Big Query (Google). A partir desses dados um dashboard apresentava os erros percentuais dos modelos.
 
+------------------------------
+
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=guilhermeagsouza&theme=highcontrast)](https://github.com/guilhermeagsouza/github-readme-stats)
 
 [![Linkedin Badge](https://img.shields.io/badge/-Guilherme-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/guilhermeagsouza/)](https://www.linkedin.com/in/guilhermeagsouza/) 
