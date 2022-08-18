@@ -31,3 +31,5 @@ Descrição: Neste projeto estudo indicadores econômicos, de educação, popula
  Os códigos estão invisíveis, porém os resultados podem ser vistos neste [link](https://github.com/guilhermeagsouza/Projetos/blob/master/An%C3%A1lise%20Vendedores%20da%20Ricardo%20Eletro.pdf) (relatório).
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=guilhermeagsouza&theme=highcontrast)](https://github.com/guilhermeagsouza/github-readme-stats)
+
+[![Linkedin Badge](https://img.shields.io/badge/-Alice-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/guilhermeagsouza/)](https://www.linkedin.com/in/guilhermeagsouza/) 
