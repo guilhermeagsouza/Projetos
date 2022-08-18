@@ -31,6 +31,8 @@ Descrição: Neste projeto estudo indicadores econômicos, de educação, popula
  Os códigos estão invisíveis, porém os resultados podem ser vistos neste [link](https://github.com/guilhermeagsouza/Projetos/blob/master/An%C3%A1lise%20Vendedores%20da%20Ricardo%20Eletro.pdf) (relatório).
 
 ------------------------------
+ **<p>Projeto: Previsão da Audiência das marcas do Grupo Abril</p>**
+[link](https://github.com/guilhermeagsouza/previsao-abril) (relatório).
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=guilhermeagsouza&theme=highcontrast)](https://github.com/guilhermeagsouza/github-readme-stats)
 
