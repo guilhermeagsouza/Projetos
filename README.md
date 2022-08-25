@@ -37,6 +37,10 @@ Descrição: Neste projeto estudo indicadores econômicos, de educação, popula
  Códigos: [Projeto privado](https://github.com/guilhermeagsouza/previsao-abril)
 
 ------------------------------
+**<p>Projeto: Dashboard Análise Cripto</p>**
+Descrição: Dashboard que traz diversos indicadores das criptomoedas que eu monitoro para investimento em Mercado Futuro.
+
+[Site do projeto](https://guilhermeagsouza.shinyapps.io/analise_cripto)
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=guilhermeagsouza&theme=highcontrast)](https://github.com/guilhermeagsouza/github-readme-stats)
 
