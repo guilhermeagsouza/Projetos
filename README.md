@@ -37,7 +37,7 @@ Descrição: Neste projeto estudo indicadores econômicos, de educação, popula
  Códigos: [Projeto privado](https://github.com/guilhermeagsouza/previsao-abril)
 
 ------------------------------
-**<p>Projeto: Utilizando XGBoost para prever se a entrada em um trade foi acertiva ou não (Notebook mais bem avaliado desenvolvido em R) </p>**
+**<p>Projeto: Utilizando XGBoost para prever se a entrada em um trade foi acertiva ou não (Notebook mais bem avaliado da competição desenvolvido em R) </p>**
 Descrição: Baseado em diversas operações (trades) em diversas classes de ativos, a empresa Jane Street patrocinou essa competição no Kaggle para ter um modelo com a maior acurácia e que pudesse explicar quão acertivos estavam sendo os trades realizados pelos profissionais do mercado. A ideia aqui foi desenvolver um modelo XGBoost inicialmente para ver a aderência aos dados.
 
 Códigos: [Kaggle](https://www.kaggle.com/code/guilhermeagsouza/eda-tidymodels-approach-with-xgboost)
