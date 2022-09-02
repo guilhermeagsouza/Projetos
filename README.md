@@ -34,7 +34,7 @@ Descrição: Neste projeto estudo indicadores econômicos, de educação, popula
  **<p>Projeto: Previsão da Audiência das marcas do Grupo Abril</p>**
  Descrição: Prever a audiência de cada marca (Veja, Superinteressante, Guia do Estudante, Quatro Rodas, Capricho, Boaforma, Saúde e Cláudia) do Grupo Abril através da métrica de pageviews. Foram realizadas análises iniciais para monitoramento de possíveis quebras estruturais nas séries. Posteriormente quatro modelos foram propostos: ETS (modelo de suavização exponencial), Prophet (Facebook), SARIMA (com variáveis regressoras) e um Ensemble ponderado dos modelos. A consolidação dos resultados alimentava um banco de dados no Big Query (Google). A partir desses dados um dashboard apresentava os erros percentuais dos modelos.
  
- Códigos: [Projeto privado](https://github.com/guilhermeagsouza/previsao-abril)
+ [Códigos](https://github.com/guilhermeagsouza/previsao-abril)
 
 ------------------------------
 **<p>Projeto: Utilizando XGBoost para prever se a entrada em um trade foi acertiva ou não (Notebook mais bem avaliado da competição desenvolvido em R) </p>**
@@ -44,7 +44,7 @@ Códigos: [Kaggle](https://www.kaggle.com/code/guilhermeagsouza/eda-tidymodels-a
 
 ------------------------------
 
-**<p>Projeto: Dashboard Análise Cripto</p>**
+**<p>Projeto: Dashboard Análise Cripto (em andamento)</p>** 
 Descrição: A ideia do dashboard é trazer além da cotação histórica e rentabilidade de uma seleção de criptomoedas, outros indicadores correlacionados ou não como NASDAQ, SP500, Ouro e a relação entre Euro/Dólar.
 
 [Site do projeto](https://guilhermeagsouza.shinyapps.io/analise_cripto)
