@@ -35,6 +35,8 @@ Descrição: Neste projeto estudo indicadores econômicos, de educação, popula
  Descrição: Prever a audiência de cada marca (Veja, Superinteressante, Guia do Estudante, Quatro Rodas, Capricho, Boaforma, Saúde e Cláudia) do Grupo Abril através da métrica de pageviews. Foram realizadas análises iniciais para monitoramento de possíveis quebras estruturais nas séries. Posteriormente quatro modelos foram propostos: ETS (modelo de suavização exponencial), Prophet (Facebook), SARIMA (com variáveis regressoras) e um Ensemble ponderado dos modelos. A consolidação dos resultados alimentava um banco de dados no Big Query (Google). A partir desses dados um dashboard apresentava os erros percentuais dos modelos.
  
  [Códigos](https://github.com/guilhermeagsouza/previsao-abril)
+ [Dashboard com dados fictícios](https://guilhermeagsouza.shinyapps.io/dashboard_audiencia/)
+
 
 ------------------------------
 **<p>Projeto: Utilizando XGBoost para prever se a entrada em um trade foi acertiva ou não (Notebook mais bem avaliado da competição desenvolvido em R) </p>**
