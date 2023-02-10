@@ -50,7 +50,7 @@ Códigos: [Kaggle](https://www.kaggle.com/code/guilhermeagsouza/eda-tidymodels-a
 **<p>Projeto: Dashboard Análise Cripto (em andamento)</p>** 
 Descrição: A ideia do dashboard é trazer além da cotação histórica e rentabilidade de uma seleção de criptomoedas, outros indicadores correlacionados ou não como NASDAQ, SP500, Ouro e a relação entre Euro/Dólar.
 
-[Site do projeto](https://guilhermeagsouza.shinyapps.io/analise_cripto)
+[Dashboard do projeto](https://guilhermeagsouza.shinyapps.io/analise_cripto)
 
 ------------------------------
 
